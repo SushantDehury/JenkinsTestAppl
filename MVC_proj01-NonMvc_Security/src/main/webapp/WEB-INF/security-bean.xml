@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<security:http use-expressions="true">
+		<security:intercept-url pattern="pages/admin.jsp"
+			access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="pages/emp.jsp"
+			access="hasRole('EMP')" />
+			<security:form-login/>
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="raja" password="raja"
+					authorities="ADMIN" />
+				<security:user name="rani" password="rani"
+					authorities="EMP" />
+				<security:user name="sushant" password="sushant"
+					authorities="ADMIN,EMP" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

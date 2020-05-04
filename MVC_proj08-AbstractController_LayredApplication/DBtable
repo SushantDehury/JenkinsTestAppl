@@ -1,0 +1,7 @@
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(20)
+ ORIGIN                                             VARCHAR2(20)
+ TYPE                                               VARCHAR2(20)
+ TOTAL                                              NUMBER(10)

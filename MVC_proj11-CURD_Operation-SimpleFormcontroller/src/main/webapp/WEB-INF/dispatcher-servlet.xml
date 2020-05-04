@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<!-- HandlerMapping -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="studDetails.htm">studDetailsController</prop>
+				<prop key="stuEdit.htm">sfc</prop>
+				<prop key="stuDelete.htm">deleteStudent</prop>
+				<prop key="home.htm">insertStudent</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- controller class -->
+	<bean id="studDetailsController" class="com.nt.controller.StudentDetailsController">
+		<constructor-arg ref="studDetailsService" />
+	</bean>
+
+	<bean id="sfc" class="com.nt.controller.StudentSimpleController">
+		<property name="commandName" value="stuCmd" />
+		<property name="commandClass" value="com.nt.command.StudentCommand" />
+		<property name="formView" value="stud_edit" />
+		<constructor-arg ref="studDetailsService" />
+	</bean>
+
+	<bean id="deleteStudent" class="com.nt.controller.DelectStudentcontroller">
+		<constructor-arg ref="studDetailsService" />
+	</bean>
+
+	<bean id="insertStudent" class="com.nt.controller.InsertStudentController">
+		<property name="commandName" value="stuCmd" />
+		<property name="commandClass" value="com.nt.command.StudentCommand" />
+		<property name="formView" value="register_student"/>
+		<property name="sessionForm" value="true"/>
+		<property name="successView" value="reg_result"/>
+		<constructor-arg ref="studDetailsService"/>
+	</bean>
+
+	<!-- view resolver -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>

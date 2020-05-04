@@ -1,0 +1,18 @@
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                NOT NULL NUMBER(10)
+ NAME                                               VARCHAR2(20)
+ ORIGIN                                             VARCHAR2(20)
+ TYPE                                               VARCHAR2(20)
+ TOTAL                                              NUMBER(10)
+ 
+ SELECT EMPNO,ENAME,JOB,SAL,MGR,DEPTNO 
+ 	FROM EMP  WHERE 
+ 		(EMPNO IS NOT NULL AND EMPNO=?)
+ 						 OR 
+ 	    (ENAME IS NOT NULL AND ENAME=?) 
+ 						 OR
+ 	    (JOB IS NOT NULL AND JOB=?)
+    					OR
+        (SAL IS NOT NULL AND SAL=?) ORDER BY ENAME
+ 

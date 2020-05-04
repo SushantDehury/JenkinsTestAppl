@@ -1,0 +1,14 @@
+
+SQL> CREATE TABLE STUDENT_DETAILS(SID NUMBER(10)PRIMARY KEY,SNAME VARCHAR2(20),ARDSS VARCHAR2(20),COURCE VARCHAR2(20));
+
+Table created.
+
+SQL> DESC STUDENT_DETAILS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(10)
+ SNAME                                              VARCHAR2(20)
+ ARDSS                                              VARCHAR2(20)
+ COURCE                                             VARCHAR2(20)
+ 
+  create sequence student_seq start with 100 increment by 1;

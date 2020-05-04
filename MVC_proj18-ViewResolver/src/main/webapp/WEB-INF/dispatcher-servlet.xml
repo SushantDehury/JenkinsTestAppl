@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+
+	<!-- HandlerMapping cfg -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="home.htm">wc</prop>
+				<prop key="result.htm">wmgc</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- Controller Class -->
+	<bean id="wc" class="com.nt.controller.WelcomeController" />
+	<bean id="wmgc" class="com.nt.controller.WishMsgGenerator" />
+	<!-- ViewResolver cfg -->
+	<!-- <bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean> -->
+
+	<!-- UrlBasedViewReslover -->
+	<!-- <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/> 
+		<property name="prefix" value="/WEB-INF/pages/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
+		
+		<!-- <bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+			<property name="basename" value="views"/>
+		</bean> -->
+		
+		<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location" value="/WEB-INF/views.xml"></property>
+		</bean>
+		
+<!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="views"></property>
+		</bean> -->
+</beans>
